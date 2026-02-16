@@ -24,7 +24,7 @@ def process_event(event: Dict[str, Any]) -> Dict[str, Any]:
     - Compute health score
     - Return normalized telemetry record
     """
-    device_id = event["device"]["id"]
+    device_id = event["device"]["id"] if event.get("device") else "unknown"
 
     temperature = float(event.get("temperature", 0.0))
     voltage = float(event.get("voltage", 0.0))
